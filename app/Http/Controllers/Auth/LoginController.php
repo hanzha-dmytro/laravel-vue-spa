@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -25,7 +26,7 @@ class LoginController extends Controller
 
         return Auth::attempt([...$validated, 'is_active' => 1])
             ? response()->json([
-                'user' => Auth::user(),
+                'user' => new UserResource(Auth::user()->load(['permissions', 'role.permissions'])),
                 'token' => Auth::user()->createToken('admin:auth')->plainTextToken
             ])
             : throw ValidationException::withMessages([

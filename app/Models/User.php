@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Notifications\ResetPasswordNotification;
+use App\Traits\Filterable;
+use App\Traits\HasPermissions;
+use Carbon\Carbon;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,17 +16,23 @@ use Laravel\Sanctum\HasApiTokens;
  * App\User
  *
  * @property integer $id
+ * @property integer $role_id
  * @property string $name
  * @property string $email
  * @property string $password
  * @property string $remember_token
  * @property boolean $is_active
+ * @property Carbon $updated_at
+ * @property Carbon $created_at
+ * @property \App\Models\Role $role
  * @mixin \Eloquent
  */
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
+    use HasApiTokens, HasFactory, Notifiable, CanResetPassword, HasPermissions, Filterable;
+
+    const PAGINATION_LIMIT = 12;
 
     /**
      * The attributes that are mass assignable.
@@ -31,10 +40,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
-        'is_active'
+        'is_active',
     ];
 
     /**
@@ -57,10 +67,18 @@ class User extends Authenticatable
     ];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
      * @param $token
      * @return void
      */
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify( new ResetPasswordNotification($token));
     }
