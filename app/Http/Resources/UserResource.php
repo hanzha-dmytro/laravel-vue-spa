@@ -19,6 +19,8 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' =>  $this->name,
             'email' =>  $this->email,
+            'description' => $this->description,
+            'avatar' => Storage::exists($this->avatar) ? Storage::url($this->avatar) : '',
             'is_active' => $this->is_active,
             'permissions' => PermissionResource::collection($this->whenLoaded('permissions')),
             'role' => new RoleResource($this->whenLoaded('role')),

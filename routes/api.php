@@ -34,6 +34,11 @@ Route::middleware('guest')->prefix('auth')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'info']);
+        Route::put('/', [ProfileController::class, 'update']);
+    });
+
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->can('users:read')->name('users.index');
         Route::post('/', [UserController::class, 'store'])->can('users:create')->name('users.store');
