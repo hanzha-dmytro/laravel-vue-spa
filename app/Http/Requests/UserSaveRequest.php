@@ -28,6 +28,8 @@ class UserSaveRequest extends FormRequest
             'name'        => 'required|string|min:3|max:24|unique:users,name,'.$this->user?->id,
             'email'       => 'required|email|unique:users,email,'.$this->user?->id,
             'password'    => 'nullable|string|min:8|max:18',
+            'description' => 'nullable|string|max:500',
+            'avatar' => 'nullable|image|file|max:1024',
             'is_active'   => 'required|boolean',
             'permissions' => 'nullable|array',
         ];

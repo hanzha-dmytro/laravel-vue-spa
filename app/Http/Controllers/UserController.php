@@ -32,8 +32,13 @@ class UserController extends Controller
      */
     public function store(UserSaveRequest $request): UserResource
     {
-        $user = new User($request->only(['name', 'email', 'is_active', 'role_id']));
+        $user = new User($request->only(['name', 'email', 'description', 'is_active', 'role_id']));
         $user->password = bcrypt($request->get('password'));
+
+        // Save user avatar
+        if($request->hasFile('avatar')) {
+            $user->avatar = $request->avatar->store('images/profile', 'public');
+        }
 
         $user->save();
         $user->syncPermissions($request->get('permissions', []));
@@ -60,10 +65,15 @@ class UserController extends Controller
      */
     public function update(UserSaveRequest $request, User $user): UserResource
     {
-        $user->fill($request->only(['name', 'email', 'is_active', 'role_id']));
+        $user->fill($request->only(['name', 'email', 'description', 'is_active', 'role_id']));
 
         if($password = $request->get('password')) {
             $user->password = bcrypt($password);
+        }
+
+        // Save user avatar
+        if($request->hasFile('avatar')) {
+            $user->avatar = $request->avatar->store('images/profile', 'public');
         }
 
         $user->save();
