@@ -1,13 +1,26 @@
-// Fonts
-@import 'fonts';
-
 // Variables
 @import 'variables';
 
-// Bootstrap
+// Vendor
 @import '~bootstrap/scss/bootstrap';
-
-// FontAwesome
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
+
+// Mixins
+@import 'mixins/button';
+@import 'mixins/font';
+
+// Base
+@import 'base/reset';
+@import 'base/fonts';
+
+// Layout
+@import 'layout';
+
+// Components
+@import 'components/buttons';
+@import 'components/list_item';
+@import 'components/footer';
+@import 'components/navbar';
+@import 'components/sidebar';

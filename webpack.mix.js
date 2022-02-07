@@ -16,5 +16,9 @@ mix.webpackConfig(webpackConfig)
 
 mix.js('resources/js/app.js', 'public/js').vue()
 
+// Copy template assets
+mix.copy('resources/favicon', 'public/favicon')
+mix.copy('resources/fonts', 'public/fonts')
+
 // Use version
 mix.version();

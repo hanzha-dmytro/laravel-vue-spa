@@ -1,0 +1,35 @@
+body, html, #root {
+  height: 100%;
+}
+
+body {
+  opacity: 1 !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  html {
+    overflow-x: hidden;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #d1d1d1;
+}

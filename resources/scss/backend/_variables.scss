@@ -1,19 +1,41 @@
-// Body
-$body-bg: #f8fafc;
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
 
-// Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+// Options
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+// Forms
+$input-font-size: 0.875rem;
+$input-line-height: 1.5;
+
+// Transitions
+$transition-base: all .35s ease-in-out;
+$transition-appearance: background .4s ease-in-out, color .4s ease-in-out;
+$transition-appearance-slow: background .6s ease-in-out, color .6s ease-in-out;
+$transition-appearance-fast: background .1s ease-in-out, color .1s ease-in-out;
+
+// Badges
+$badge-font-size: 80%;
+$badge-padding-y: .3em;
+$badge-padding-x: .45em;
+
+// Hamburger
+$hamburger-width-top: 24px;
+$hamburger-width-middle: 24px;
+$hamburger-width-bottom: 16px;
+
+// Cards
+$card-bg: $white;
+$card-border-radius: .25rem;
+$card-inner-border-radius: $card-border-radius;
+$card-border-width: 0;
+$card-border-color: transparent;
+$card-cap-bg: $white;
+$card-shadow: 0 0 .875rem 0 rgba($dark, 0.05);
+$card-title-font-size: $font-size-lg;
+$card-title-font-weight: $font-weight-bold;
+$card-title-color: lighten($gray-600, 15%);
+$card-spacer-y: 1.25rem;
+$card-spacer-x: 1.25rem;
+$card-cap-padding-y: 1rem;
+$card-cap-padding-x: $card-spacer-x;
