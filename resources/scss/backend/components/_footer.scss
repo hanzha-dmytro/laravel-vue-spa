@@ -1,0 +1,12 @@
+footer.footer {
+  padding: 16px 14px;
+  background: #fff;
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 100vw;
+  }
+}
