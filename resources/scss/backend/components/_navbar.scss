@@ -1,0 +1,145 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  padding: 10px 22px;
+  box-shadow: 0 0 32px 0 rgba($gray-900, .1);
+  border-bottom: 0;
+  background: $white;
+  z-index: 100;
+
+  @include media-breakpoint-down(md) {
+    width: 100vw;
+  }
+
+  .navbar-collapse {
+    .navbar-nav {
+      margin-left: auto;
+
+      .nav-item {
+        .nav-icon {
+          display: block;
+          padding: 2px 12px;
+          font-size: 24px;
+          color: $gray-600;
+          transition: $transition-appearance-fast;
+
+          &:after {
+            display: none !important;
+          }
+
+          &:hover,
+          &.active {
+            color: $blue;
+          }
+
+          i {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        &:hover .indicator {
+          top: -4px;
+        }
+
+        a:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+
+  .user-menu {
+    .dropdown-toggle {
+      display: flex;
+      padding: 5px;
+      min-width: 180px;
+      border-radius: 5px;
+      position: relative;
+      flex-wrap: nowrap;
+      align-items: center;
+      background: $gray-100;
+      cursor: pointer;
+      user-select: none;
+      border: solid 1px transparent;
+
+      img {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+        background: $gray-200;
+      }
+
+      .user-info {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+
+        .user-name {
+          display: block;
+          font-size: 14px;
+          font-weight: 600;
+          color: $gray-800;
+        }
+
+        .user-role {
+          display: block;
+          line-height: 12px;
+          font-size: 12px;
+          color: $gray-700;
+        }
+      }
+
+      &:after {
+        transition: transform .2s ease;
+      }
+
+      &.show {
+        border: solid 1px $gray-400;
+        border-radius: 5px 5px 0 0;
+
+        &:after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      position: initial;
+    }
+
+    .dropdown-menu {
+      width: 100%;
+      margin: -1px 0 0 0;
+      background: $gray-100;
+      border: solid 1px $gray-400;
+      border-radius: 0 0 5px 5px;
+    }
+  }
+
+}
+
+@include media-breakpoint-down(sm) {
+  .navbar {
+    padding: 12px;
+
+    .navbar-collapse {
+      .navbar-nav {
+        .nav-item {
+          .nav-link {
+            &:after {
+              display: none;
+            }
+          }
+
+          .nav-icon {
+            padding: 0 12px;
+          }
+        }
+      }
+    }
+  }
+}

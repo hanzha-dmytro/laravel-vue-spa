@@ -1,0 +1,80 @@
+.card {
+  &.list-item {
+    overflow: hidden;
+    box-shadow: 0 0 14px 0 rgba(#212529, 0.05);
+
+    .status-badge {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      z-index: 5;
+      background: #0a58ca;
+    }
+
+    .card-header {
+      background-color: transparent;
+      border-bottom: 1px solid rgba(0,0,0,.125);
+      padding: 12px 20px;
+      position: relative;
+    }
+
+    .card-body {
+      .card-title {
+        display: block;
+        font-size: 1.125rem;
+        line-height: 1.5;
+        font-weight: 500;
+        margin-bottom: 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:after {
+          content: "";
+          display: block;
+          margin: 4px 0;
+          border-bottom: solid rgba(0, 0, 0, 0.125) 1px;
+        }
+      }
+
+      .card-subtitle {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .card-text {
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-break: break-word;
+      }
+
+      ul.attributes {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+      }
+    }
+
+    .card-footer {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .card-img {
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+}

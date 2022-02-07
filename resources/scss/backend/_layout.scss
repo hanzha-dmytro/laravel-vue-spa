@@ -1,0 +1,41 @@
+body {
+  color: $gray-800;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.wrapper {
+  align-items: stretch;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  transition: margin-left .35s ease-in-out, left .35s ease-in-out, margin-right .35s ease-in-out, right .35s ease-in-out;
+  background: $gray-100;
+  flex-direction: column;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  padding: 24px 48px;
+
+  @include media-breakpoint-down(md) {
+    width: 100vw;
+    padding: 16px 24px;
+  }
+}
+
