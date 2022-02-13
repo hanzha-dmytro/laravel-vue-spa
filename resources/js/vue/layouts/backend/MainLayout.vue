@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <toasts />
         <sidebar />
         <div class="main">
             <navbar />
@@ -13,9 +14,10 @@
     import Sidebar from "../../components/backend/app/Sidebar";
     import Navbar from "../../components/backend/app/Navbar";
     import AppFooter from "../../components/backend/app/Footer";
+    import Toasts from "../../components/backend/toast/Wrapper.vue";
 
     export default {
-        components: { Navbar, Sidebar, AppFooter },
+        components: { Navbar, Sidebar, AppFooter, Toasts },
     }
 </script>
 
