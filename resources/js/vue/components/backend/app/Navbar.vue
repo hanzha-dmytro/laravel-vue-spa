@@ -17,10 +17,11 @@
                         </div>
                     </div>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a href="#" class="dropdown-item">
-                            <i class="fa-solid fa-user align-middle me-2"></i>
+
+                        <router-link :to="{ name: 'admin.profile' }" class="dropdown-item">
+                            <i class="fas fa-user align-middle me-2"></i>
                             <span class="align-middle">Profile</span>
-                        </a>
+                        </router-link>
 
                         <a href="#" class="dropdown-item">
                             <i class="fa-solid fa-cogs align-middle mr-1"></i>

@@ -13,6 +13,12 @@ const routes = {
             component: () => import('../../../views/backend/Dashboard'),
         },
         {
+            path: 'profile',
+            name: 'admin.profile',
+            meta: { middleware: auth },
+            component: () => import('../../../views/backend/Profile'),
+        },
+        {
             path: '*',
             name: 'admin.error.404',
             component: () => import('../../../views/backend/error/Error404')
