@@ -1,0 +1,12 @@
+.pagination-wrapper {
+  display: flex;
+  user-select: none;
+
+  @include media-breakpoint-down(md) {
+    justify-content: center;
+
+    .page-link {
+      padding: 6px 10px;
+    }
+  }
+}
