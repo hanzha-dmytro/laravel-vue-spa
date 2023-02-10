@@ -26,6 +26,7 @@
         "bootstrap": "^5.0.2",
         "chart.js": "^3.5.0",
         "cropperjs": "^1.5.12",
+        "moment": "^2.29.4",
         "vue": "^2.7.0",
         "vue-router": "^3.5.2",
         "vuex": "^3.6.2"
