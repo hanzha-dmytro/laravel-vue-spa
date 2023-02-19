@@ -1,6 +1,7 @@
 //Middleware
 import user from '../../middleware/backend/user'
 import auth from '../../middleware/backend/auth'
+import hasPermissions from '../../middleware/backend/hasPermissions'
 
 const routes = {
     path: '/admin',
@@ -17,6 +18,39 @@ const routes = {
             name: 'admin.profile',
             meta: { middleware: auth },
             component: () => import('../../../views/backend/Profile'),
+        },
+        {
+            path: 'users',
+            name: 'admin.users.index',
+            props: (route) => ({
+                page: route.query.page,
+                role_id: route.query.role_id,
+                search: route.query.search,
+            }),
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['users:read'],
+            },
+            component: () => import('../../../views/backend/user/List'),
+        },
+        {
+            path: 'users/create',
+            name: 'admin.users.create',
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['users:read', 'users:create'],
+            },
+            component: () => import('../../../views/backend/user/Create'),
+        },
+        {
+            path: 'users/edit/:id',
+            name: 'admin.users.edit',
+            props: true,
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['users:read', 'users:update'],
+            },
+            component: () => import('../../../views/backend/user/Update'),
         },
         {
             path: '*',
