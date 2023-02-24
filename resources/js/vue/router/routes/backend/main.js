@@ -53,6 +53,38 @@ const routes = {
             component: () => import('../../../views/backend/user/Update'),
         },
         {
+            path: 'roles',
+            name: 'admin.roles.index',
+            props: (route) => ({
+                page: route.query.page,
+                search: route.query.search,
+            }),
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['roles:read'],
+            },
+            component: () => import('../../../views/backend/role/List'),
+        },
+        {
+            path: 'roles/create',
+            name: 'admin.roles.create',
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['roles:read', 'roles:create'],
+            },
+            component: () => import('../../../views/backend/role/Create'),
+        },
+        {
+            path: 'roles/edit/:id',
+            name: 'admin.roles.edit',
+            props: true,
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['roles:read', 'roles:update'],
+            },
+            component: () => import('../../../views/backend/role/Update'),
+        },
+        {
             path: '*',
             name: 'admin.error.404',
             component: () => import('../../../views/backend/error/Error404')
