@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 abstract class QueryFilter
 {
     const IS_ACTIVE = 'active';
+    const IS_VISIBLE = 'visible';
 
     private array $queryParams;
 

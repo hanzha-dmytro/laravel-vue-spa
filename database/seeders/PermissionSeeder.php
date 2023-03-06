@@ -29,6 +29,12 @@ class PermissionSeeder extends Seeder
 
         // Permission for permission model
         $this->createPermission('permissions:read', ['admin']);
+
+        // Permission for category model
+        $this->createPermission('categories:read',   ['admin', 'moderator', 'editor']);
+        $this->createPermission('categories:create', ['admin', 'moderator', 'editor']);
+        $this->createPermission('categories:update', ['admin', 'moderator', 'editor']);
+        $this->createPermission('categories:delete', ['admin', 'moderator', 'editor']);
     }
 
     /**
