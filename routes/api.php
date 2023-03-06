@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -58,4 +59,13 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::get('permissions', [PermissionController::class, 'all'])->can('permissions:read')->name('permissions.all');
+
+    Route::prefix('categories')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->can('categories:read')->name('categories.index');
+        Route::post('/', [CategoryController::class, 'store'])->can('categories:create')->name('categories.store');
+        Route::get('/all', [CategoryController::class, 'all'])->can('categories:read')->name('categories.all');
+        Route::get('/{category}', [CategoryController::class, 'show'])->can('categories:read')->name('categories.show');
+        Route::put('/{category}', [CategoryController::class, 'update'])->can('categories:update')->name('categories.update');
+        Route::delete('/{category}', [CategoryController::class, 'destroy'])->can('categories:delete')->name('categories.destroy');
+    });
 });
