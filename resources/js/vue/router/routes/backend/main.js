@@ -85,6 +85,19 @@ const routes = {
             component: () => import('../../../views/backend/role/Update'),
         },
         {
+            path: 'categories',
+            name: 'admin.categories.index',
+            props: (route) => ({
+                page: route.query.page,
+                search: route.query.search,
+            }),
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['categories:read'],
+            },
+            component: () => import('../../../views/backend/category/List'),
+        },
+        {
             path: '*',
             name: 'admin.error.404',
             component: () => import('../../../views/backend/error/Error404')
