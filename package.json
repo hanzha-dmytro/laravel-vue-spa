@@ -23,7 +23,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.1.1",
         "@popperjs/core": "^2.9.2",
-        "bootstrap": "^5.0.2",
+        "bootstrap": "^5.2.0",
         "chart.js": "^3.5.0",
         "cropperjs": "^1.5.12",
         "moment": "^2.29.4",

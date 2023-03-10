@@ -152,6 +152,17 @@
           }
         }
       }
+
+      hr {
+        height: 2px;
+        margin: 5px 0;
+        background: linear-gradient(to right, transparent, transparent 0%, #0d6efd 50%, transparent 100%, transparent);
+        opacity: .5;
+
+        &:not(:has(+ li)) {
+          display: none;;
+        }
+      }
     }
   }
 

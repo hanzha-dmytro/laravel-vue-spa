@@ -15,6 +15,19 @@
                     </li>
                 </router-link>
 
+                <hr>
+
+                <router-link exact :to="{ name: 'admin.categories.index' }" v-slot="{ href, route, navigate, isActive }" v-if="$can('categories:read')" custom>
+                    <li class="sidebar-item" :class="[isActive && 'active']">
+                        <a class="sidebar-link" :href="href" @click="navigate">
+                            <i class="fa-solid fa-rectangle-list align-middle"></i>
+                            <span class="align-middle">Categories</span>
+                        </a>
+                    </li>
+                </router-link>
+
+                <hr>
+
                 <router-link exact :to="{ name: 'admin.users.index' }" v-slot="{ href, route, navigate, isActive }" v-if="$can('users:read')" custom>
                     <li class="sidebar-item" :class="[isActive && 'active']">
                         <a class="sidebar-link" :href="href" @click="navigate">
