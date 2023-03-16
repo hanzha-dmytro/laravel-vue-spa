@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property boolean $is_visible
  * @property Carbon $updated_at
  * @property Carbon $created_at
+ * @property-read \App\Models\Post[] $posts
  * @mixin \Eloquent
  */
 
@@ -33,4 +34,9 @@ class Category extends Model
         'image',
         'is_visible',
     ];
+
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }

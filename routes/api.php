@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -67,5 +68,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{category}', [CategoryController::class, 'show'])->can('categories:read')->name('categories.show');
         Route::put('/{category}', [CategoryController::class, 'update'])->can('categories:update')->name('categories.update');
         Route::delete('/{category}', [CategoryController::class, 'destroy'])->can('categories:delete')->name('categories.destroy');
+    });
+
+    Route::prefix('posts')->group(function () {
+        Route::get('/', [PostController::class, 'index'])->can('posts:read')->name('posts.index');
+        Route::post('/', [PostController::class, 'store'])->can('posts:create')->name('posts.store');
+        Route::get('/all', [PostController::class, 'all'])->can('posts:read')->name('posts.all');
+        Route::get('/{post}', [PostController::class, 'show'])->can('posts:read')->name('posts.show');
+        Route::put('/{post}', [PostController::class, 'update'])->can('posts:update')->name('posts.update');
+        Route::delete('/{post}', [PostController::class, 'destroy'])->can('posts:delete')->name('posts.destroy');
     });
 });
