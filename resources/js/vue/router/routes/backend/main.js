@@ -98,6 +98,39 @@ const routes = {
             component: () => import('../../../views/backend/category/List'),
         },
         {
+            path: 'posts/',
+            name: 'admin.posts.index',
+            props: (route) => ({
+                page: route.query.page,
+                category_id: route.query.category_id,
+                search: route.query.search,
+            }),
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['posts:read'],
+            },
+            component: () => import('../../../views/backend/post/List'),
+        },
+        {
+            path: 'posts/create',
+            name: 'admin.posts.create',
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['posts:read', 'posts:create'],
+            },
+            component: () => import('../../../views/backend/post/Create'),
+        },
+        {
+            path: 'posts/edit/:id',
+            name: 'admin.posts.edit',
+            props: true,
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['posts:read', 'posts:update'],
+            },
+            component: () => import('../../../views/backend/post/Update.vue'),
+        },
+        {
             path: '*',
             name: 'admin.error.404',
             component: () => import('../../../views/backend/error/Error404')

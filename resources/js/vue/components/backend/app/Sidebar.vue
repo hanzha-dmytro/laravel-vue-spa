@@ -26,6 +26,15 @@
                     </li>
                 </router-link>
 
+                <router-link :to="{ name: 'admin.posts.index' }" v-slot="{ href, route, navigate, isActive }" v-if="$can('posts:read')" custom>
+                    <li class="sidebar-item" :class="[isActive && 'active']">
+                        <a class="sidebar-link" :href="href" @click="navigate">
+                            <i class="far fa-newspaper align-middle"></i>
+                            <span class="align-middle">Posts</span>
+                        </a>
+                    </li>
+                </router-link>
+
                 <hr>
 
                 <router-link exact :to="{ name: 'admin.users.index' }" v-slot="{ href, route, navigate, isActive }" v-if="$can('users:read')" custom>
