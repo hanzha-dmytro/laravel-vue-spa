@@ -39,7 +39,11 @@ module.exports = {
                         context: './resources'
                     }
                 }
-            }
+            },
+            {
+                test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
+                use: [ 'raw-loader' ]
+            },
         ]
     },
     output: {

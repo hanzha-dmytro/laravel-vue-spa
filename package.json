@@ -23,8 +23,10 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.1.1",
         "@popperjs/core": "^2.9.2",
+        "air-datepicker": "^3.3.5",
         "bootstrap": "^5.2.0",
         "chart.js": "^3.5.0",
+        "ckeditor5-advanced-build": "^1.0.0",
         "cropperjs": "^1.5.12",
         "moment": "^2.29.4",
         "vue": "^2.7.0",
