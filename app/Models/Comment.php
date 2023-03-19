@@ -8,36 +8,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Post
+ * App\Comment
  *
  * @property integer $id
- * @property boolean $category_id
+ * @property integer $post_id
  * @property string $name
- * @property string $slug
- * @property string $description
  * @property string $content
- * @property string $image
  * @property boolean $is_visible
  * @property Carbon $published_at
  * @property Carbon $updated_at
  * @property Carbon $created_at
- * @property \App\Models\Category $category
+ * @property \App\Models\Post $post
  * @mixin \Eloquent
  */
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory, Filterable;
 
-    const PAGINATION_LIMIT = 10;
+    const PAGINATION_LIMIT = 30;
 
     protected $fillable = [
-        'category_id',
+        'post_id',
         'name',
-        'slug',
-        'description',
         'content',
-        'image',
         'is_visible',
         'published_at',
     ];
@@ -48,13 +42,8 @@ class Post extends Model
         'created_at',
     ];
 
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Post::class);
     }
 }

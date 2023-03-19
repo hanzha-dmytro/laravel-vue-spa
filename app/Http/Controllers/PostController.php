@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index(PostIndexRequest $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         return PostResource::collection(
-            Post::filter(new PostFilter($request))->with(['category'])->paginate(Post::PAGINATION_LIMIT)
+            Post::filter(new PostFilter($request))->with(['category', 'comments'])->paginate(Post::PAGINATION_LIMIT)
         );
     }
 

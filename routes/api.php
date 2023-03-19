@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -77,5 +78,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{post}', [PostController::class, 'show'])->can('posts:read')->name('posts.show');
         Route::put('/{post}', [PostController::class, 'update'])->can('posts:update')->name('posts.update');
         Route::delete('/{post}', [PostController::class, 'destroy'])->can('posts:delete')->name('posts.destroy');
+    });
+
+    Route::prefix('comments')->group(function () {
+        Route::get('/', [CommentController::class, 'index'])->can('comments:read')->name('comments.index');
+        Route::post('/', [CommentController::class, 'store'])->can('comments:create')->name('comments.store');
+        Route::get('/all', [CommentController::class, 'all'])->can('comments:read')->name('comments.all');
+        Route::get('/{comment}', [CommentController::class, 'show'])->can('comments:read')->name('comments.show');
+        Route::put('/{comment}', [CommentController::class, 'update'])->can('comments:update')->name('comments.update');
+        Route::delete('/{comment}', [CommentController::class, 'destroy'])->can('comments:delete')->name('comments.destroy');
+        Route::put('/{comment}/status', [CommentController::class, 'changeStatus'])->can('comments:update')->name('comments.change-status');
     });
 });
