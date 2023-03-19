@@ -24,6 +24,7 @@ class PostResource extends JsonResource
             'image' => Storage::exists($this->image) ? Storage::url($this->image) : '',
             'author' => new UserResource($this->whenLoaded('author')),
             'category' => new CategoryResource($this->whenLoaded('category')),
+            'comments' => CommentResource::collection($this->whenLoaded('comments')),
             'published_at' => $this->published_at->format('Y-m-d'),
             $this->mergeWhen($request->user()?->can('posts:read'), [
                 'is_visible' => $this->is_visible,
