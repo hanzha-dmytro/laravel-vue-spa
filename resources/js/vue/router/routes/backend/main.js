@@ -131,6 +131,17 @@ const routes = {
             component: () => import('../../../views/backend/post/Update.vue'),
         },
         {
+            path: 'comments/',
+            name: 'admin.comments.index',
+            props: (route) => ({
+                page: route.query.page,
+                search: route.query.search,
+                visibility: route.query.visibility,
+            }),
+            meta: { middleware: auth},
+            component: () => import('../../../views/backend/comment/List'),
+        },
+        {
             path: '*',
             name: 'admin.error.404',
             component: () => import('../../../views/backend/error/Error404')
