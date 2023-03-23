@@ -35,6 +35,15 @@
                     </li>
                 </router-link>
 
+                <router-link :to="{ name: 'admin.comments.index' }" v-slot="{ href, route, navigate, isActive }" v-if="$can('comments:read')" custom>
+                    <li class="sidebar-item" :class="[isActive && 'active']">
+                        <a class="sidebar-link" :href="href" @click="navigate">
+                            <i class="fas fa-comments align-middle"></i>
+                            <span class="align-middle">Comments</span>
+                        </a>
+                    </li>
+                </router-link>
+
                 <hr>
 
                 <router-link exact :to="{ name: 'admin.users.index' }" v-slot="{ href, route, navigate, isActive }" v-if="$can('users:read')" custom>
