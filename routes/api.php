@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -88,5 +89,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/{comment}', [CommentController::class, 'update'])->can('comments:update')->name('comments.update');
         Route::delete('/{comment}', [CommentController::class, 'destroy'])->can('comments:delete')->name('comments.destroy');
         Route::put('/{comment}/status', [CommentController::class, 'changeStatus'])->can('comments:update')->name('comments.change-status');
+    });
+
+    Route::prefix('pages')->group(function () {
+        Route::get('/', [PageController::class, 'index'])->can('pages:read')->name('pages.index');
+        Route::post('/', [PageController::class, 'store'])->can('pages:create')->name('pages.store');
+        Route::get('/all', [PageController::class, 'all'])->can('pages:read')->name('pages.all');
+        Route::get('/{page}', [PageController::class, 'show'])->can('pages:read')->name('pages.show');
+        Route::put('/{page}', [PageController::class, 'update'])->can('pages:update')->name('pages.update');
+        Route::delete('/{page}', [PageController::class, 'destroy'])->can('pages:delete')->name('pages.destroy');
     });
 });
