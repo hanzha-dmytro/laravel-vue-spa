@@ -47,6 +47,12 @@ class PermissionSeeder extends Seeder
         $this->createPermission('comments:create', ['admin', 'moderator']);
         $this->createPermission('comments:update', ['admin', 'moderator']);
         $this->createPermission('comments:delete', ['admin', 'moderator']);
+
+        // Permission for page model
+        $this->createPermission('pages:read',   ['admin', 'moderator', 'editor']);
+        $this->createPermission('pages:create', ['admin', 'moderator', 'editor']);
+        $this->createPermission('pages:update', ['admin', 'moderator', 'editor']);
+        $this->createPermission('pages:delete', ['admin', 'moderator', 'editor']);
     }
 
     /**
