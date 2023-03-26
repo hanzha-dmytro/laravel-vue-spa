@@ -142,6 +142,39 @@ const routes = {
             component: () => import('../../../views/backend/comment/List'),
         },
         {
+            path: 'pages/',
+            name: 'admin.pages.index',
+            props: (route) => ({
+                page: route.query.page,
+                search: route.query.search,
+                visibility: route.query.visibility,
+            }),
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['pages:read'],
+            },
+            component: () => import('../../../views/backend/page/List'),
+        },
+        {
+            path: 'pages/create',
+            name: 'admin.pages.create',
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['pages:read', 'pages:create'],
+            },
+            component: () => import('../../../views/backend/page/Create'),
+        },
+        {
+            path: 'pages/edit/:id',
+            name: 'admin.pages.edit',
+            props: true,
+            meta: {
+                middleware: hasPermissions,
+                permissions: ['pages:read', 'pages:update'],
+            },
+            component: () => import('../../../views/backend/page/Update.vue'),
+        },
+        {
             path: '*',
             name: 'admin.error.404',
             component: () => import('../../../views/backend/error/Error404')
