@@ -1,0 +1,19 @@
+.card {
+  &.stats-card {
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 500;
+    }
+
+    .stat-icon {
+      align-items: center;
+      background: #d3e2f7;
+      border-radius: 50%;
+      color: #3b7ddd;
+      display: flex;
+      height: 42px;
+      justify-content: center;
+      width: 40px;
+    }
+  }
+}

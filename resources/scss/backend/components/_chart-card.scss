@@ -1,0 +1,9 @@
+.card {
+  &.chart-card {
+    .card-body {
+      .chart {
+        min-height: 176px;
+      }
+    }
+  }
+}
