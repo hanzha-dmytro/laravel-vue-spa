@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
@@ -98,5 +99,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{page}', [PageController::class, 'show'])->can('pages:read')->name('pages.show');
         Route::put('/{page}', [PageController::class, 'update'])->can('pages:update')->name('pages.update');
         Route::delete('/{page}', [PageController::class, 'destroy'])->can('pages:delete')->name('pages.destroy');
+    });
+
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->can('dashboard:show')->name('dashboard.index');
     });
 });

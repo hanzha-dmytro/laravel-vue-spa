@@ -53,6 +53,9 @@ class PermissionSeeder extends Seeder
         $this->createPermission('pages:create', ['admin', 'moderator', 'editor']);
         $this->createPermission('pages:update', ['admin', 'moderator', 'editor']);
         $this->createPermission('pages:delete', ['admin', 'moderator', 'editor']);
+
+        // Permission for dashboard
+        $this->createPermission('dashboard:show', ['admin', 'moderator', 'editor']);
     }
 
     /**
