@@ -15,6 +15,7 @@
                         </div>
                         <form-text-area v-model="form.description" label="Description" placeholder="Type description" class="mb-3" :errors="errors.description" />
                         <form-html-editor v-model="form.content" label="Content" :errors="errors.content" class="mb-3" />
+                        <form-check-box v-model="form.is_pinned" label="Pinned" class="form-switch" :errors="errors.is_pinned" />
                         <form-check-box v-model="form.is_visible" label="Visible" class="form-switch" :errors="errors.is_visible" />
                     </div>
                 </div>
@@ -67,6 +68,7 @@ export default {
                 description: this.data.description ?? '',
                 content: this.data.content ?? '',
                 is_visible: !!(this.data?.is_visible ?? 1),
+                is_pinned: !!(this.data?.is_pinned ?? 0),
                 published_at: this.data.published_at ?? '',
             },
             categories: [],

@@ -31,6 +31,7 @@ class PostSaveRequest extends FormRequest
             'description'  => 'required|string|max:500',
             'content'      => 'required|string|max:65535',
             'image'        => 'nullable|image|file|max:1024',
+            'is_pinned'    => 'required|boolean',
             'is_visible'   => 'required|boolean',
             'published_at' => 'nullable|date',
         ];
@@ -42,6 +43,7 @@ class PostSaveRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
+            'is_pinned' => filter_var($this->is_pinned, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE),
             'is_visible' => filter_var($this->is_visible, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE),
         ]);
     }

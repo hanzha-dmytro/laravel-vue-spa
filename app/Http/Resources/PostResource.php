@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             'description' => $this->description,
             'content' => $this->content,
             'image' => Storage::exists(strval($this->image)) ? Storage::url($this->image) : '',
+            'is_pinned' => $this->is_pinned,
             'author' => new UserResource($this->whenLoaded('author')),
             'category' => new CategoryResource($this->whenLoaded('category')),
             'comments' => CommentResource::collection($this->whenLoaded('comments')),

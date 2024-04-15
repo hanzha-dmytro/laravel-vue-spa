@@ -1,0 +1,402 @@
+// General
+
+body {
+  color: $gray-800;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 auto;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.full-width {
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+}
+
+a, a:hover {
+  transition: all .2s;
+}
+
+a {
+  color: $success;
+}
+
+a.text-dark:hover {
+  color: $success !important;
+}
+
+.c-pointer:hover {
+  cursor: pointer;
+}
+
+.z-index-1 {
+  z-index: 1;
+}
+
+// Margins
+.row.gap-y > .col, .row.gap-y > [class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.mt-neg5 {
+  margin-top: -5rem;
+}
+
+.ml-neg5 {
+  margin-left: -5rem;
+}
+
+// Heights
+@include media-breakpoint-up(md) {
+  .h-md-100-v {
+    height: 100vh;
+  }
+  .h-md-100 {
+    height: 100vh;
+  }
+}
+
+@include media-breakpoint-only(xl) {
+  .h-xl-300 {
+    height: 300px;
+  }
+  .h-max-380 {
+    max-height: 380px;
+  }
+}
+
+// Mixins
+@mixin button-variant-link($color) {
+  color: $color;
+}
+
+
+@each $color, $value in $theme-colors {
+  .btn-link.btn-#{$color} {
+    @include button-variant-link($value);
+    border-color: transparent;
+  }
+}
+
+.btn-white {
+  background-color: #fff;
+}
+
+// Inputs
+
+.input-group.input-round {
+  input:first-child {
+    border-radius: 30px 0 0 30px
+  }
+
+  input:last-child {
+    border-radius: 0px 30px 30px 0px
+  }
+}
+
+
+// Nav
+.navbar {
+  box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.05);
+  transition: all .08s;
+  font-weight: $font-weight-normal;
+
+  .highlight .nav-link {
+    color: $primary !important;
+    border: 1px solid $success;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    font-size: .93rem;
+  }
+
+  .highlight .nav-link:hover {
+    background: $success;
+    color: #fff !important;
+  }
+}
+
+.navbar-brand {
+  margin-right: 2rem;
+  font-size: 1.25rem;
+}
+
+.scrollednav {
+
+}
+
+.dropdown-item {
+  font-weight: $font-weight-base;
+}
+
+.dropdown-menu {
+  border: 0;
+  text-transform: none;
+  box-shadow: $box-shadow-lg;
+
+  &:before {
+    @include media-breakpoint-up(md) {
+      content: '';
+      top: -8px;
+      position: absolute;
+      left: 50px;
+      border-top: 16px solid #fff;
+      border-left: 16px solid #fff;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+// Backgrounds
+.bg-black {
+  background-color: $black;
+}
+
+.overlay {
+  position: relative;
+
+  .container {
+    position: relative;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.overlay-black {
+  &:before {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.overlay-blue {
+  &:before {
+    background-color: rgba(23, 29, 90, 0.5);
+  }
+}
+
+.overlay-red {
+  &:before {
+    background: linear-gradient(0deg, rgba(44, 44, 44, .2), rgba(224, 23, 3, .6));
+  }
+}
+
+.overlay-blue {
+  &:before {
+    background-color: rgba(23, 29, 90, 0.5);
+  }
+}
+
+// SVG fills
+
+@mixin fill-variant($parent, $color) {
+  #{$parent} {
+    fill: $color !important;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  @include fill-variant(".bg-#{$color}", $value);
+}
+
+// Cards
+.card {
+  .date {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    background: $danger;
+    width: 55px;
+    height: 55px;
+    padding: 12.5px 0;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-align: center;
+    -webkti-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    .day {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .month {
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $primary;
+  }
+}
+
+.card-pricing .card ul li {
+  margin-bottom: 1.5rem;
+}
+
+// Icons
+.iconbox {
+  border: 1px solid;
+  text-align: center;
+  display: inline-block;
+}
+
+.iconbox.iconsmall {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1rem;
+}
+
+.iconbox.iconmedium {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 1.8rem;
+}
+
+.iconbox.iconlarge {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 2.2rem;
+}
+
+// Lists
+
+ul.list-unstyled li {
+  margin-bottom: .3rem;
+}
+
+ol.list-featured {
+  counter-reset: my-awesome-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+ol.list-featured li {
+  counter-increment: my-awesome-counter;
+  display: flex;
+  font-size: 0.8rem;
+}
+
+ol.list-featured li:before {
+  content: "0" counter(my-awesome-counter);
+  font-weight: bold;
+  font-size: 3rem;
+  margin-right: 0.5rem;
+  font-family: 'Abril Fatface', serif;
+  line-height: 1;
+}
+
+// Login
+
+@include media-breakpoint-up(md) {
+  .loginarea {
+    z-index: 1111;
+  }
+}
+
+// Article
+article {
+  font-family: "sans-serif", "Georgia";
+  font-size: 20px;
+  line-height: 1.7;
+
+  p, pre, figure, img, blockquote, iframed, embed {
+    margin-bottom: 2rem;
+  }
+
+  blockquote {
+    padding-left: 40px;
+    margin-left: 0px;
+    font-style: italic;
+    position: relative;
+  }
+
+  blockquote:before {
+    content: "“";
+    font-family: Georgia;
+    font-size: 8rem;
+    margin: -1rem 2rem 0 -3.9rem;
+    position: absolute;
+    opacity: 1;
+    float: left;
+    line-height: 1;
+  }
+
+  &:first-letter {
+    float: left;
+    font-size: 5em;
+    line-height: 1;
+    margin: 0 .2em 0 0;
+    vertical-align: top;
+  }
+}
+
+.title-with-underscore{
+  border-bottom: 1px solid #e8f3ec;
+  margin-bottom: 2rem;
+  font-weight: 700 !important;
+
+  span {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.44);
+    display: inline-block;
+    padding-bottom: 20px;
+    margin-bottom: -1px;
+  }
+}
+
+// Footer
+footer.bg-black {
+  color: $gray-600;
+
+  a {
+    color: $gray-600;
+
+    &:hover {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+}
+
+
+.with-border span {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.44);
+  display: inline-block;
+  padding-bottom: 20px;
+  margin-bottom: -1px;
+}

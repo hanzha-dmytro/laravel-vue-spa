@@ -94,4 +94,25 @@ class PostController extends Controller
     {
         return PostResource::collection(Post::all());
     }
+
+    /**
+     * Display the primary resource in storage.
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function primary(): PostResource|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        $primary = Post::pinned()->with(['author', 'category'])->first();
+        return new PostResource($primary);
+    }
+
+    /**
+     * Display latest items of the resource.
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function latest(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        return PostResource::collection(Post::latest()->with(['author', 'category'])->limit(4)->get());
+    }
 }

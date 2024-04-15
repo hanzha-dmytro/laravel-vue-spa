@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Filterable;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property string $content
  * @property string $image
+ * @property boolean $is_pinned
  * @property boolean $is_visible
  * @property Carbon $published_at
  * @property Carbon $updated_at
@@ -39,6 +41,7 @@ class Post extends Model
         'description',
         'content',
         'image',
+        'is_pinned',
         'is_visible',
         'published_at',
     ];
@@ -62,5 +65,10 @@ class Post extends Model
     public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function scopePinned(Builder $query): Builder
+    {
+        return $query->where('is_pinned', 1);
     }
 }

@@ -34,6 +34,12 @@ Route::middleware('guest')->prefix('auth')->group(function () {
 });
 
 // PUBLIC ROUTES
+Route::middleware('visitor')->group(function () {
+    Route::prefix('posts')->group(function () {
+        Route::get('/primary', [PostController::class, 'primary'])->name('posts.primary');
+        Route::get('/latest', [PostController::class, 'latest'])->name('posts.latest');
+    });
+});
 
 // PROTECTED ROUTES
 Route::middleware('auth:sanctum')->group(function () {
