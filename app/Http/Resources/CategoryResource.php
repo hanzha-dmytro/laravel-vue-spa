@@ -20,7 +20,7 @@ class CategoryResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
-            'image' => Storage::exists($this->image) ? Storage::url($this->image) : '',
+            'image' => Storage::exists(strval($this->image)) ? Storage::url($this->image) : '',
             'posts' => PostResource::collection($this->whenLoaded('posts')),
             $this->mergeWhen($request->user()?->can('categories:read'), [
                 'is_visible' => $this->is_visible,

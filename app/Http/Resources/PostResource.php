@@ -21,7 +21,7 @@ class PostResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'content' => $this->content,
-            'image' => Storage::exists($this->image) ? Storage::url($this->image) : '',
+            'image' => Storage::exists(strval($this->image)) ? Storage::url($this->image) : '',
             'author' => new UserResource($this->whenLoaded('author')),
             'category' => new CategoryResource($this->whenLoaded('category')),
             'comments' => CommentResource::collection($this->whenLoaded('comments')),

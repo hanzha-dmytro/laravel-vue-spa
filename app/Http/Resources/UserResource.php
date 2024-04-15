@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'name' =>  $this->name,
             'email' =>  $this->email,
             'description' => $this->description,
-            'avatar' => Storage::exists($this->avatar) ? Storage::url($this->avatar) : '',
+            'avatar' => Storage::exists(strval($this->avatar)) ? Storage::url($this->avatar) : '',
             'is_active' => $this->is_active,
             'permissions' => PermissionResource::collection($this->whenLoaded('permissions')),
             'role' => new RoleResource($this->whenLoaded('role')),
