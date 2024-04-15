@@ -70,6 +70,11 @@ RUN apt-get update; \
     pecl install imagick; \
     docker-php-ext-enable imagick;
 
+# Install xdebug
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
+RUN install-php-extensions xdebug
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
